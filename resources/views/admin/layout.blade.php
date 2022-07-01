@@ -74,7 +74,7 @@
                                 <a href="/member"
                                    class="nav-link">
                                     <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                    <p>Member</p>
+                                    <p>Pasien</p>
                                 </a>
                             </li>
                         </ul>

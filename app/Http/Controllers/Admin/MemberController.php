@@ -35,14 +35,17 @@ class MemberController extends CustomController
             $user_data = [
                 'username' => $this->postField('username'),
                 'password' => Hash::make($this->postField('password')),
-                'role' => 'member',
+                'role' => 'pasien',
             ];
             $user = User::create($user_data);
             $member_data = [
                 'user_id' => $user->id,
                 'nama' => $this->postField('nama'),
                 'no_hp' => $this->postField('no_hp'),
-                'alamat' => $this->postField('alamat')
+                'alamat' => $this->postField('alamat'),
+                'jenis_kelamin' => $this->postField('jenis_kelamin'),
+                'umur' => $this->postField('umur'),
+                'tanggal_lahir' => $this->postField('tanggal_lahir'),
             ];
             Member::create($member_data);
             DB::commit();
@@ -75,9 +78,13 @@ class MemberController extends CustomController
             $user->update($data_user);
             $member = Member::with('user')->where('user_id', '=', $user->id)->firstOrFail();
             $member_data = [
+                'user_id' => $user->id,
                 'nama' => $this->postField('nama'),
                 'no_hp' => $this->postField('no_hp'),
-                'alamat' => $this->postField('alamat')
+                'alamat' => $this->postField('alamat'),
+                'jenis_kelamin' => $this->postField('jenis_kelamin'),
+                'umur' => $this->postField('umur'),
+                'tanggal_lahir' => $this->postField('tanggal_lahir'),
             ];
             $member->update($member_data);
             DB::commit();

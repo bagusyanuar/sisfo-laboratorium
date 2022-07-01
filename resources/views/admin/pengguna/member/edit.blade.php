@@ -52,6 +52,23 @@
                                     <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap"
                                            name="nama" value="{{ $data->member->nama }}">
                                 </div>
+                                <div class="form-group w-100 mb-1">
+                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                                        <option value="pria" {{ $data->member->jenis_kelamin == 'pria' ? 'selected' :'' }}>Pria</option>
+                                        <option value="wanita" {{ $data->member->jenis_kelamin == 'wanita' ? 'selected' :'' }}>Wanita</option>
+                                    </select>
+                                </div>
+                                <div class="w-100 mb-1">
+                                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                    <input type="date" class="form-control" id="tanggal_lahir"
+                                           name="tanggal_lahir" value="{{ $data->member->tanggal_lahir }}">
+                                </div>
+                                <div class="w-100 mb-1">
+                                    <label for="umur" class="form-label">No. Hp</label>
+                                    <input type="number" class="form-control" id="umur" placeholder="Umur"
+                                           name="umur" value="{{ $data->member->umur }}">
+                                </div>
                                 <div class="w-100 mb-1">
                                     <label for="no_hp" class="form-label">No. Hp</label>
                                     <input type="number" class="form-control" id="no_hp" placeholder="No. Hp"
