@@ -17,15 +17,15 @@
     @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Daftar Pasien</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Dokter</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/member">Pasien</a>
+                    <a href="/dokter">Dokter</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah
+                <li class="breadcrumb-item active" aria-current="page">Edit
                 </li>
             </ol>
         </div>
@@ -34,12 +34,13 @@
                 <div class="col-lg-6 col-md-6 col-sm-11">
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" action="/member/create">
+                            <form method="post" action="/dokter/patch">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $data->id }}">
                                 <div class="w-100 mb-1">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="Username"
-                                           name="username">
+                                           name="username" value="{{ $data->username }}">
                                 </div>
                                 <div class="w-100 mb-1">
                                     <label for="password" class="form-label">Password</label>
@@ -49,34 +50,17 @@
                                 <div class="w-100 mb-1">
                                     <label for="nama" class="form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap"
-                                           name="nama">
-                                </div>
-                                <div class="form-group w-100 mb-1">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-                                        <option value="pria">Pria</option>
-                                        <option value="wanita">Wanita</option>
-                                    </select>
-                                </div>
-                                <div class="w-100 mb-1">
-                                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" id="tanggal_lahir"
-                                           name="tanggal_lahir" value="{{ date('Y-m-d') }}">
-                                </div>
-                                <div class="w-100 mb-1">
-                                    <label for="umur" class="form-label">Umur</label>
-                                    <input type="number" class="form-control" id="umur" placeholder="Umur"
-                                           name="umur">
+                                           name="nama" value="{{ $data->dokter->nama }}">
                                 </div>
                                 <div class="w-100 mb-1">
                                     <label for="no_hp" class="form-label">No. Hp</label>
                                     <input type="number" class="form-control" id="no_hp" placeholder="No. Hp"
-                                           name="no_hp">
+                                           name="no_hp" value="{{ $data->dokter->no_hp }}">
                                 </div>
                                 <div class="w-100 mb-1">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <textarea rows="3" class="form-control" id="alamat" placeholder="Alamat"
-                                              name="alamat"></textarea>
+                                              name="alamat">{{ $data->dokter->alamat }}</textarea>
                                 </div>
                                 <div class="w-100 mb-2 mt-3 text-right">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

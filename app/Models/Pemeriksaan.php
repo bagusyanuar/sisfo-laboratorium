@@ -23,6 +23,7 @@ class Pemeriksaan extends Model
         'tanggal_spesimen_jawab',
         'makroskopis',
         'mikroskopis',
+        'status',
     ];
 
     public function pasien()

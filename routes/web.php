@@ -34,3 +34,26 @@ Route::group(['prefix' => 'member'], function () {
     Route::post( '/delete', [\App\Http\Controllers\Admin\MemberController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'dokter'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\DokterController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\DokterController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\DokterController::class, 'create']);
+    Route::get( '/edit/{id}', [\App\Http\Controllers\Admin\DokterController::class, 'edit_page']);
+    Route::post( '/patch', [\App\Http\Controllers\Admin\DokterController::class, 'patch']);
+    Route::post( '/delete', [\App\Http\Controllers\Admin\DokterController::class, 'destroy']);
+});
+
+Route::group(['prefix' => 'pemeriksaan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\PemeriksaanController::class, 'index']);
+    Route::get( '/tambah', [\App\Http\Controllers\Admin\PemeriksaanController::class, 'add_page']);
+    Route::post( '/create', [\App\Http\Controllers\Admin\PemeriksaanController::class, 'create']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Admin\PemeriksaanController::class, 'detail']);
+});
+
+Route::group(['prefix' => 'pemeriksaan-dokter'], function () {
+    Route::get( '/', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'detail']);
+    Route::post( '/create', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'create']);
+    Route::post( '/patch', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'patch']);
+});
+

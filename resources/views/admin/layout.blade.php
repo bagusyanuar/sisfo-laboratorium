@@ -43,7 +43,8 @@
         </a>
         <div class="my-sidebar-menu">
             <ul class="nav nav-sidebar nav-pills flex-column">
-                <nav class="mt-2 nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <nav class="mt-2 nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                     data-accordion="false">
                     <li class="nav-item">
                         <a href="/"
                            class="nav-link">
@@ -51,59 +52,71 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="nav-header" style="padding: 0.5rem 1rem 0.5rem 1rem;">
-                        Master Data
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-users"></i>
-                            <p>
-                                Pengguna
-                                <i class="right fa fa-angle-down"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/admin"
-                                   class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                    <p>Admin</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/member"
-                                   class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                    <p>Pasien</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-briefcase"></i>
-                            <p>
-                                Transaksi
-                                <i class="right fa fa-angle-down"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/penerimaan"
-                                   class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                    <p>Penerimaan</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/pengembalian"
-                                   class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
-                                    <p>Pengembalian</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if(auth()->user()->role == 'admin')
+                        <li class="nav-header" style="padding: 0.5rem 1rem 0.5rem 1rem;">
+                            Master Data
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>
+                                    Pengguna
+                                    <i class="right fa fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Admin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/dokter"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Dokter</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/member"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Pasien</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-briefcase"></i>
+                                <p>
+                                    Transaksi
+                                    <i class="right fa fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/pemeriksaan"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Pemeriksaan</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(auth()->user()->role == 'dokter')
+                        <li class="nav-item">
+                            <a href="/pemeriksaan-dokter"
+                               class="nav-link">
+                                <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                                <p>Pemeriksaan</p>
+                            </a>
+                        </li>
+                    @endif
                 </nav>
             </ul>
         </div>

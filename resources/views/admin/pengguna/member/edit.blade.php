@@ -31,7 +31,7 @@
         </div>
         <div class="w-100 p-2">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 col-sm-11">
+                <div class="col-lg-6 col-md-6 col-sm-11">
                     <div class="card">
                         <div class="card-body">
                             <form method="post" action="/member/patch">
@@ -65,7 +65,7 @@
                                            name="tanggal_lahir" value="{{ $data->member->tanggal_lahir }}">
                                 </div>
                                 <div class="w-100 mb-1">
-                                    <label for="umur" class="form-label">No. Hp</label>
+                                    <label for="umur" class="form-label">Umur</label>
                                     <input type="number" class="form-control" id="umur" placeholder="Umur"
                                            name="umur" value="{{ $data->member->umur }}">
                                 </div>
