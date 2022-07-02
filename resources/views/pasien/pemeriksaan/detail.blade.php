@@ -9,15 +9,21 @@
             Swal.fire("Berhasil!", '{{\Illuminate\Support\Facades\Session::get('success')}}', "success")
         </script>
     @endif
+
+    @if (\Illuminate\Support\Facades\Session::has('failed'))
+        <script>
+            Swal.fire("Gagal!", '{{\Illuminate\Support\Facades\Session::get('failed')}}', "error")
+        </script>
+    @endif
     <div class="container-fluid pt-3">
         <div class="d-flex align-items-center justify-content-between mb-3">
-            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Pemeriksaan</p>
+            <p class="font-weight-bold mb-0" style="font-size: 20px">Halaman Detail Riwayat Pemeriksaan</p>
             <ol class="breadcrumb breadcrumb-transparent mb-0">
                 <li class="breadcrumb-item">
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="/pemeriksaan">Pemeriksaan</a>
+                    <a href="/pemeriksaan-dokter">Pemeriksaan</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Detail
                 </li>
@@ -121,14 +127,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-3 col-md-3">
-                            <span class="font-weight-bold">
-                                Asal Jaringan
-                            </span>
+                                    <span class="font-weight-bold">
+                                        Asal Jaringan
+                                    </span>
                                 </div>
                                 <div class="col-lg-9 col-md-9">
-                            <span class="font-weight-bold">
-                                : {{ md5($data->asal_jaringan) }}
-                            </span>
+                                    <span class="font-weight-bold">
+                                        : {{ $data->asal_jaringan == '' ? '-' : $data->asal_jaringan}}
+                                    </span>
                                 </div>
                             </div>
                             <div class="row">
@@ -136,10 +142,10 @@
                                     <span class="font-weight-bold">
                                         Diagnosa Klinik
                                     </span>
-                                        </div>
-                                        <div class="col-lg-9 col-md-9">
+                                </div>
+                                <div class="col-lg-9 col-md-9">
                                     <span class="font-weight-bold">
-                                        : {{ md5($data->diagnosa) }}
+                                        : {{ $data->diagnosa == '' ? '-' : $data->diagnosa}}
                                     </span>
                                 </div>
                             </div>
@@ -148,10 +154,10 @@
                                     <span class="font-weight-bold">
                                         Dokter
                                     </span>
-                                        </div>
-                                        <div class="col-lg-9 col-md-9">
+                                </div>
+                                <div class="col-lg-9 col-md-9">
                                     <span class="font-weight-bold">
-                                        : {{ $data->dokter == null ? '-' : $data->dokter->dokter->nama }}
+                                        : {{ $data->dokter == null ? '-' : $data->dokter->dokter->nama}}
                                     </span>
                                 </div>
                             </div>
@@ -161,7 +167,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-lg-6 col-md-6">
                             <div class="d-flex align-items-start">
                                 <span class="font-weight-bold mr-2">
@@ -173,7 +179,7 @@
                                     </p>
                                     <p class="font-weight-bold mb-0">
                                         Di Jawab
-                                        : {{ $data->tanggal_spesimen_jawab != null ? $data->tanggal_spesimen_jawab : '-'}}
+                                        : {{ $data->tanggal_spesimen_jawab == null ? '-' : $data->tanggal_spesimen_jawab }}
                                     </p>
                                 </div>
                             </div>
@@ -188,11 +194,19 @@
             <div class="card">
                 <div class="card-body">
                     <p class="font-weight-bold">MAKROSKOPIS</p>
-                    <p class="mb-3">{{ $data->makroskopis != '' ? md5($data->makroskopis) : '-'  }}</p>
+                    <p class="mb-2">{{ $data->makroskopis == '' ? '-' : $data->makroskopis }}</p>
                     <p class="font-weight-bold">MIKROSKOPIS</p>
-                    <p class="mb-3">{{ $data->mikroskopis != '' ? md5($data->mikroskopis) : '-'}}</p>
+                    <p class="mb-2">{{ $data->mikroskopis == '' ? '-' : $data->mikroskopis }}</p>
                 </div>
             </div>
+            @if($data->dokter != null)
+                <div class="text-right">
+                    <a href="/laporan-pemeriksaan-dokter/cetak/{{ $data->id }}" target="_blank" class="btn btn-success" id="btn-cetak">
+                        <i class="fa fa-print mr-2"></i>
+                        <span>Cetak</span>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 

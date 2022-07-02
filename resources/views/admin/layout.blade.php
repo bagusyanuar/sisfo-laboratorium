@@ -106,6 +106,24 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-bar-chart"></i>
+                                <p>
+                                    Laporan
+                                    <i class="right fa fa-angle-down"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/laporan-pemeriksaan"
+                                       class="nav-link">
+                                        <i class="fa fa-circle-o nav-icon" aria-hidden="true"></i>
+                                        <p>Pemeriksaan</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
 
                     @if(auth()->user()->role == 'dokter')
@@ -113,6 +131,23 @@
                             <a href="/pemeriksaan-dokter"
                                class="nav-link">
                                 <i class="fa fa-briefcase nav-icon" aria-hidden="true"></i>
+                                <p>Pemeriksaan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/laporan-pemeriksaan-dokter"
+                               class="nav-link">
+                                <i class="fa fa-bar-chart nav-icon" aria-hidden="true"></i>
+                                <p>Laporan</p>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(auth()->user()->role == 'pasien')
+                        <li class="nav-item">
+                            <a href="/riwayat-pemeriksaan"
+                               class="nav-link">
+                                <i class="fa fa-history nav-icon" aria-hidden="true"></i>
                                 <p>Pemeriksaan</p>
                             </a>
                         </li>

@@ -50,10 +50,28 @@ Route::group(['prefix' => 'pemeriksaan'], function () {
     Route::get( '/detail/{id}', [\App\Http\Controllers\Admin\PemeriksaanController::class, 'detail']);
 });
 
+Route::group(['prefix' => 'laporan-pemeriksaan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Admin\LaporanController::class, 'index']);
+    Route::get( '/data', [\App\Http\Controllers\Admin\LaporanController::class, 'data']);
+    Route::get( '/cetak', [\App\Http\Controllers\Admin\LaporanController::class, 'cetak']);
+});
+
 Route::group(['prefix' => 'pemeriksaan-dokter'], function () {
     Route::get( '/', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'index']);
     Route::get( '/detail/{id}', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'detail']);
     Route::post( '/create', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'create']);
     Route::post( '/patch', [\App\Http\Controllers\Dokter\PemeriksaanController::class, 'patch']);
+});
+
+Route::group(['prefix' => 'laporan-pemeriksaan-dokter'], function () {
+    Route::get( '/', [\App\Http\Controllers\Dokter\LaporanController::class, 'index']);
+    Route::get( '/data', [\App\Http\Controllers\Dokter\LaporanController::class, 'data']);
+    Route::get( '/cetak', [\App\Http\Controllers\Dokter\LaporanController::class, 'cetak']);
+    Route::get( '/cetak/{id}', [\App\Http\Controllers\Dokter\LaporanController::class, 'cetak_detail']);
+});
+
+Route::group(['prefix' => 'riwayat-pemeriksaan'], function () {
+    Route::get( '/', [\App\Http\Controllers\Pasien\PemeriksaanController::class, 'index']);
+    Route::get( '/detail/{id}', [\App\Http\Controllers\Pasien\PemeriksaanController::class, 'detail']);
 });
 
